@@ -3,18 +3,27 @@
 </div>
 
 <!-- Html faltante -->
-<div>
-  <button class="btn btn-primary" (click)="randomMethod()">Search</button>
+<div class="mb-3">
+  <input
+    type="text"
+    placeholder="Search by title"
+    [(ngModel)]="searchString"
+    class="ml-4"
+  />
+  <button class="btn btn-primary ml-4" (click)="search()">Search</button>
 </div>
 
 <div class="container mt-4">
   <h2>Todo List</h2>
   <ul class="list-group">
-    <li class="list-group-item mb-3" *ngFor="let todo of todos">
+    <li class="list-group-item mb-3" *ngFor="let todo of filteredTodos">
       <h5>{{ todo.title }}</h5>
       <p>User ID: {{ todo.userId }}</p>
       <p>ID: {{ todo.id }}</p>
       <p>Status: {{ todo.completed ? 'Completed' : 'Pending' }}</p>
     </li>
   </ul>
+  <div *ngIf="filteredTodos.length === 0">
+    <p>No todos match your search criteria.</p>
+  </div>
 </div>

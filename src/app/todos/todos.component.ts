@@ -9,13 +9,25 @@ import { Todo } from '../types';
 })
 export class TodosComponent {
   todos: Todo[] = [];
+  filteredTodos: Todo[] = [];
+  searchString: string = '';
+
   constructor(private todosService: TodosService) {}
 
   ngOnInit(): void {
     this.todosService.index().subscribe((data: Todo[]) => {
       this.todos = data;
+      this.filteredTodos = this.todos;
     });
   }
 
-  randomMethod() {}
+  search(): void {
+    if (this.searchString != '') {
+      this.filteredTodos = this.todos.filter(todo =>
+        todo.title.toLowerCase().includes(this.searchString.toLowerCase())
+      );
+    } else {
+      this.filteredTodos = this.todos;
+    }
+  }
 }
