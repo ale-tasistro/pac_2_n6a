@@ -25,6 +25,7 @@
       <p>User ID: {{ todo.userId }}</p>
       <p>ID: {{ todo.id }}</p>
       <p>Status: {{ todo.completed ? 'Completed' : 'Pending' }}</p>
+      <button class="btn btn-info" [routerLink]="['/todos', todo.id]">View Details</button>
     </li>
   </ul>
   <div *ngIf="filteredTodos.length === 0">
