@@ -1,1 +1,12 @@
-<p>todo-detail works!</p>
+<div class="mt-5 ml-5 pl-5 pt-5">
+  <div *ngIf="todo">
+    <h2>Todo Details</h2>
+    <p><strong>Title:</strong> {{ todo.title }}</p>
+    <p><strong>ID:</strong> {{ todo.id }}</p>
+    <p><strong>User ID:</strong> {{ todo.userId }}</p>
+    <p><strong>Status:</strong> {{ todo.completed ? 'Completed' : 'Pending' }}</p>
+  </div>
+  <div *ngIf="!todo">
+    <p>Loading...</p>
+  </div>
+</div>
